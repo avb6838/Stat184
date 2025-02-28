@@ -46,3 +46,52 @@ collatzStoppingTime <- function(n, counter = 0){
 ?Vectorize
 vectCollatz <- sapply(1:100, collatzStoppingTime)
 hist(vectCollatz, breaks = 100)
+
+#Spinner function----
+spinner <- function(p1wins = 0, p2wins = 0){
+  while((p1wins != 5)&(p2wins != 5)){
+    spinResult <- sample(1:1000, 1)
+    if(spinResult%%2==0){
+      p1wins <- p1wins + 1
+    }
+    else{
+      p2wins <- p2wins + 1
+    }
+  }
+  if(p1wins == 5){
+    print("Player 1 wins!")
+  }
+  else{
+    print("Player 2 wins!")
+  }
+}
+
+simResults <- replicate(
+  n = 10000,
+  expr = spinner()
+)
+table(simResults)
+
+spinner2 <- function(p1wins = 0, p2wins = 0){
+  while((p1wins != 5)&(p2wins != 5)){
+    spinResult <- sample(1:10, 1)
+    if(spinResult<=4){
+      p1wins <- p1wins + 1
+    }
+    else{
+      p2wins <- p2wins + 1
+    }
+  }
+  if(p1wins == 5){
+    print("Rahquez wins!")
+  }
+  else{
+    print("Christina wins!")
+  }
+}
+
+simResults <- replicate(
+  n = 1000,
+  expr = spinner2()
+)
+table(simResults)
