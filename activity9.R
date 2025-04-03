@@ -1,8 +1,6 @@
 library(ggplot2)
 data(diamonds)
 
-View(diamonds)
-
 ggplot(
   data = diamonds,
   mapping = aes(
@@ -12,7 +10,7 @@ ggplot(
     shape = cut,
   )
 ) +
-  geom_point(size = 2) +
+  geom_point(size = 1) +
   labs(
     x = "table (width relative to the widest point)",
     y = "depth (the tallest part of the diamond)",
