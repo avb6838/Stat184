@@ -19,6 +19,17 @@ format:
 echo: false
 warning: false
 ---
+```{r}
+library(janitor)
+library(knitr)
+library(kableExtra)
+library(tidyverse)
+library(tidyr)
+library(googlesheets4)
+library(rvest)
+library(dplyr)
+library(dcData)
+```
 
 # Armed Forces Data
 
@@ -28,9 +39,7 @@ First I created a data frame for individual cases by calling the data from a Goo
 #| label: armyIndividual
 # Creating the data frame where each case is 
 #an individual soldier that includes rank names
-library(tidyverse)
-library(googlesheets4)
-library(rvest)
+
 #import data from the html and google sheet into 2 separate data frames
 #gs4_deauth(), read_sheet, read_html, html_elements, html_table
 gs4_deauth()
@@ -103,11 +112,7 @@ Here is a two-way frequency table that shows the relationship between sex and ra
 
 ```{r}
 #| label: armyFreqTable
-library(janitor)
-library(knitr)
-library(kableExtra)
-library(tidyverse)
-library(tidyr)
+
 #IMPORTANT: armyInd is the individual case table from above
 
 colnames(armyInd)[1] <- "PayGrade"
@@ -141,9 +146,6 @@ Here utilizing data of various baby names, I created a time series plot looking 
 #| label: BabyPlot
 
 #Create subset of baby names that just includes John, Kenneth, Gracie, and Zachary
-library(tidyverse)
-library(dplyr)
-library(dcData)
 
 subBabyNames <- BabyNames %>%
 #filtering only the necessary names,
